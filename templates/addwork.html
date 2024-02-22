@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body><center>
+    <h1>Add Work</h1>
+    <form action="" method="post">
+        <table>
+            <tr>
+                <th>Title</th>
+                <td><input type="text" name="noti" ></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+            <td><textarea name="des" id="" cols="20" rows="10"></textarea></td>
+            </tr>
+            <tr>`
+                <th>client</th>
+                <td><select name="client" id="id">
+                    {%for i in data['client']%}
+                    <option value="{{i['client_id']}}">{{i['company_name']}}</option>
+                    {%endfor%}
+                </select></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" name="send" value="SEND"></td>
+            </tr>
+        </table>
+    </form>
+    <table border="1">
+        <tr>
+            <!-- <th>ticket_id</th>
+            <th>client_id</th> -->
+            <th>date</th>
+            <th>client name</th>
+            <th>title</th>
+            <th>description</th>
+            <th>status</th>
+            
+        </tr>
+       {% for i in data['user']%}
+        <tr>
+             <!-- <td>{{i['ticket_id']}}</td> -->
+        
+            <td>{{i['date']}}</td>
+            <td>{{i['company_name']}}</td> 
+            <td>{{i['title']}}</td>
+            <td>{{i['description']}}</td>
+            <td>{{i['status']}}</td>
+           
+
+
+        </tr>
+        {%endfor%}
+    </table>
+    </form>
+
+
+
+</center>
+    
+</body>
+</html>

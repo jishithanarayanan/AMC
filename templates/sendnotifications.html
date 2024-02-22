@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body><center>
+    <h1>Notifications</h1>
+    {%if data['up']%}
+    <form action="" method="post">
+        <table>
+            <tr>
+                <th>TITLE</th>
+                <td><input type="text" name="noti" value="{{data['up'][0]['title']}}"></td>
+            </tr>
+            <tr>
+                <th>DESCRIPTION</th>
+                <td><textarea name="des" value="{{data['up'][0]['description']}}"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" name="update" value="EDIT"></td>
+            </tr>
+            </table>
+            </form>
+            {%else%}
+
+
+
+
+
+
+    <form action="" method="post">
+    <table>
+        <tr>
+            <th>Title</th>
+            <td><input type="text" name="noti" ></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+        <td><textarea name="des" id="" cols="20" rows="10"></textarea></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center"><input type="submit" name="send" value="SEND"></td>
+        </tr>
+    </table>
+</form>
+<table border="1">
+    <tr>
+        <th>date</th>
+        <th>title</th>
+        <th>description</th>
+    </tr>
+    {%for i in data['user']%}
+    <tr>
+       <td>{{i['date']}}</td>
+       <td>{{i['title']}}</td>
+       <td>{{i['description']}}</td>
+       <td><a href="?action=update&id={{i['notification_id']}}">Edit</a></td>
+       <td><a href="?action=delete&id={{i['notification_id']}}">Delete</a></td>
+    </tr>
+    {%endfor%}
+</table>
+{%endif%}
+
+
+</center>
+    
+</body>
+</html>

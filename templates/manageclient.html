@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {%if data['up']%}
+    <form action="" method="post">
+        <table>
+            <tr>
+                <th>Company Name</th>
+                <td><input type="text" name="cn" value="{{data['up'][0]['company_name']}}"></td>
+            </tr>
+            <tr>
+                <th>Place</th>
+                <td><input type="text" name="pl" value="{{data['up'][0]['place']}}"></td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td><input type="number" name="pn" value="{{data['up'][0]['phone']}}"></td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td><input type="email" name="em"  value="{{data['up'][0]['email']}}"></td>
+            </tr>
+            <tr>
+                <th>Latitude</th>
+                <td><input type="text" name="lat" value="{{data['up'][0]['latitude']}}"></td>
+            </tr>
+            <tr>
+                    <th>Longitude</th>
+                    <td><input type="text" name="lon" value="{{data['up'][0]['longitude']}}"></td>
+            </tr>
+        </table>
+    </form>
+    {%else%}
+  
+    <form action="" method="post">
+        <table>
+            <tr>
+                <th>Company Name</th>
+                <td><input type="text" name="cn"></td>
+            </tr>
+            <tr>
+                <th>Place</th>
+                <td><input type="text" name="pl"></td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td><input type="number" name="pn"></td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td><input type="email" name="em"></td>
+            </tr>
+            <tr>
+                <th>Latitude</th>
+                <td><input type="text" name="lat"></td>
+            </tr>
+            <tr>
+                    <th>Longitude</th>
+                    <td><input type="text" name="lon"></td>
+            </tr>
+           <tr>
+                <th>username</th>
+                <td><input type="text" name="uname"></td>
+           </tr>
+           <tr>
+                <th>Password</th>
+                <td><input type="password" name="pwd"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" name="submit" value="Add"></td>
+            </tr>
+            </table>
+        </form>
+        <table border="1">
+            <tr>
+                <th>companyname</th>
+                <th>place</th>
+                <th>phone</th>
+                <th>email</th>
+                <th>latitude</th>
+                <th>longitude</th>
+            </tr>
+            {%for i in data['user']%}
+            <tr>
+               <td>{{i['company_name']}}</td>
+               <td>{{i['place']}}</td>
+               <td>{{i['phone']}}</td>
+               <td>{{i['email']}}</td>
+               <td>{{i['latitude']}}</td>
+               <td>{{i['longitude']}}</td>
+               <td><a href="?action=update&id={{i['client_id']}}">update</a></td>
+               {% if i['usertype']=='client'%}
+               <td><a href="?action=deactive&id={{i['login_id']}}">Deactive</a></td>
+               {% else %}
+               <td><a href="?action=active&id={{i['login_id']}}">Active</a></td>
+               {% endif %}
+            </tr>
+            {%endfor%}
+        </table>
+        {%endif%}
+
+    
+</body>
+</html>
