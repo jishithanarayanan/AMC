@@ -13,7 +13,7 @@ def adminhome():
 @admin.route('/managestaff',methods=['GET','POST'])
 def managestaff():
     data={}
-    qry2="select * from staff inner join login using(login_id)"
+    qry2="select * from staff inner join login using(login_id)``"
     data['user']=select(qry2)
     if 'submit' in request.form:
         fname=request.form['fn']
